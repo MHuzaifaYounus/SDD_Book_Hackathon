@@ -1,0 +1,49 @@
+---
+sidebar_position: 2
+---
+import HardwareCard from '@site/src/components/HardwareCard.js';
+
+# Physical AI Edge Kit Setup
+
+The Physical AI Edge Kit is designed for deploying and testing your AI models in real-world scenarios. This compact, energy-efficient hardware platform allows for direct interaction with physical robots and environments, bridging the gap between simulation and reality.
+
+## Hardware Components
+
+The Edge Kit comprises several key components, each playing a crucial role in enabling embodied intelligence:
+
+### Brain: NVIDIA Jetson Orin Nano
+
+The NVIDIA Jetson Orin Nano serves as the brain of your Edge Kit, providing powerful AI computing capabilities at the edge. It's designed to run complex AI models for perception, navigation, and control in real-time.
+
+<HardwareCard title="NVIDIA Jetson Orin Nano (8GB) or Orin NX" spec="Edge AI Computer" />
+
+**Key Features**:
+-   **High Performance**: Capable of processing multiple sensor streams and running advanced neural networks simultaneously.
+-   **Energy Efficiency**: Optimized for low power consumption, making it suitable for battery-powered robotics applications.
+-   **Rich I/O**: Offers a wide range of interfaces for connecting cameras, sensors, and actuators.
+
+### Eyes: Intel RealSense Depth Camera
+
+The Intel RealSense depth camera provides your Edge Kit with advanced perception capabilities, allowing it to "see" the world in 3D. This is vital for tasks like object detection, mapping, and obstacle avoidance.
+
+<HardwareCard title="Intel RealSense D435i or D455" spec="Depth Camera" />
+
+**Key Features**:
+-   **Depth Perception**: Provides accurate depth information, enabling 3D environment understanding.
+-   **RGB Camera**: Captures high-resolution color images for visual processing.
+-   **IMU (D435i)**: Integrated Inertial Measurement Unit for motion tracking and improved spatial awareness.
+
+### Ear/Voice: ReSpeaker USB Mic Array
+
+The ReSpeaker USB Mic Array equips your Edge Kit with audio input capabilities, crucial for voice command recognition and sound event detection. This enables natural language interaction with your robot.
+
+<HardwareCard title="ReSpeaker USB Mic Array" spec="Microphone Array" />
+
+**Key Features**:
+-   **Far-Field Voice Capture**: Designed to pick up voices from a distance in noisy environments.
+-   **Direction Finding**: Can determine the direction of sound sources, allowing the robot to orient itself towards the speaker.
+-   **Noise Reduction**: Built-in algorithms to reduce background noise and improve voice clarity.
+
+## Setup and Configuration
+
+*Detailed setup and configuration guides for each component will be provided in the following sections. This will include flashing the Jetson OS, installing necessary drivers for the RealSense camera, and configuring the ReSpeaker array for audio input.*
