@@ -12,4 +12,5 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
-/.gemini
+.gemini
+.gemini/
