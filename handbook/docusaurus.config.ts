@@ -7,7 +7,7 @@ import rehypeKatex from 'rehype-katex';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Physical AI Handbook',
+  title: 'Physical AI & Humanoid Robotics',
   tagline: 'A Handbook for Embodied Intelligence',
   favicon: 'img/favicon.ico',
 
@@ -46,8 +46,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
@@ -74,7 +73,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Physical AI Handbook',
+      title: 'Physical AI & Humanoid Robotics',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -87,7 +86,7 @@ const config: Config = {
           label: 'Handbook',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/MHuzaifaYounus/SDD_Book_Hackathon',
           label: 'GitHub',
           position: 'right',
         },
@@ -118,7 +117,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/MHuzaifaYounus/SDD_Book_Hackathon',
             },
           ],
         },

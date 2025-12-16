@@ -1,0 +1,15 @@
+.featureGridSection {
+  padding: 4rem 0;
+  background-color: var(--ifm-color-emphasis-100); /* Use custom variable for section background */
+}
+
+.featureCard {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid rgba(73, 73, 73, 0.589); /* Use custom variable for border */
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  height: calc(100% - 2rem);
+  background-color: var(--ifm-card-background); /* Use custom variable for card background */
+  color: var(--ifm-card-text-color); /* Use custom variable for card text color */
+}

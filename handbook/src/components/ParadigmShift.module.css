@@ -1,0 +1,28 @@
+.paradigmSection {
+  padding: 4rem 0;
+  background-color: var(--ifm-color-emphasis-100); /* Use custom variable for section background */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.paradigmCard {
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  height: 100%;
+  background-color: var(--ifm-card-background); /* Use custom variable for card background */
+  color: var(--ifm-card-text-color); /* Use custom variable for card text color */
+}
+
+.risk {
+  background-color: var(--ifm-color-danger);
+  color: white; /* Ensure text is white on danger background */
+}
+
+.safety {
+  background-color: var(--ifm-color-success);
+  color: white; /* Ensure text is white on success background */
+}
