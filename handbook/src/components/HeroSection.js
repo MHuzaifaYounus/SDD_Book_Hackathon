@@ -13,7 +13,7 @@ const HeroSection = () => {
             <div className={styles.buttons}>
               <a
                 className="button button--secondary button--lg"
-                href="/docs/01-foundations/01-digital-twin-workstation">
+                href="/docs/foundations/digital-twin-workstation">
                 Start Building
               </a>
               <a

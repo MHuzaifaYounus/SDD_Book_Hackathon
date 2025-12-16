@@ -8,7 +8,7 @@ const FinalCTA = () => {
         <h2>Ready to Build the Body?</h2>
         <a
           className="button button--primary button--lg"
-          href="/docs/01-foundations/01-digital-twin-workstation">
+          href="/docs/foundations/digital-twin-workstation">
           Start Chapter 1: Foundations
         </a>
       </div>
