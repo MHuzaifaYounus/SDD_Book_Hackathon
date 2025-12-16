@@ -1,54 +1,64 @@
 ---
 sidebar_position: 1
 ---
-import HardwareCard from '@site/src/components/HardwareCard.js';
 
-# Digital Twin Workstation Setup
+# The Digital Twin Workstation
 
-This guide will walk you through setting up your Digital Twin Workstation for Physical AI development. This is a critical first step, establishing the high-performance computing environment necessary for simulating complex humanoid robotics.
+Welcome to the first step in your Physical AI journey. Before we can build the mind of a robot, we must first build its world. A Digital Twin Workstation is a high-performance computer that serves as your virtual laboratory. It's where you will simulate, train, and debug your robotic systems in a perfectly safe, controlled, and cost-free environment before deploying them to physical hardware.
 
-## Understanding the "Digital Twin"
-
-A Digital Twin Workstation is your primary development environment. It's where you'll design, simulate, and test your AI models and robot behaviors before deploying them to physical hardware. The performance of this workstation directly impacts your development velocity and the fidelity of your simulations.
+This "sim-first" approach is the core philosophy of modern robotics development. It allows for rapid iteration and testing without the risks and expenses associated with physical hardware.
 
 ## Hardware Requirements
 
-Achieving realistic and interactive simulations, especially with rich sensor data and complex physics, demands significant computational resources. Below are the recommended hardware specifications. **Meeting or exceeding these is crucial for an efficient development experience.**
+The performance of your simulation environment is directly tied to the power of your workstation. While it's possible to use cloud solutions (covered later), having a capable local machine is ideal for a smooth, interactive experience.
 
-### Graphics Processing Unit (GPU) - The Workhorse
+### Recommended Specifications
 
-The GPU is the single most important component for Physical AI development due to its parallel processing capabilities, essential for simulations (NVIDIA Isaac Sim), AI model training, and high-fidelity rendering.
+The following specifications are crucial for running complex simulations, especially those involving photorealistic rendering and physics calculations in platforms like NVIDIA Isaac Sim.
 
-<HardwareCard title="Crucial: NVIDIA RTX 4070 Ti (or higher)" spec="12GB VRAM - Provides a solid baseline for most simulations." />
-<HardwareCard title="Ideal: NVIDIA RTX 3090/4090" spec="24GB VRAM - Highly recommended for complex scenes, larger models, and faster training iterations." />
+| Component | Minimum Requirement                               | Ideal Specification                               |
+| :-------- | :------------------------------------------------ | :------------------------------------------------ |
+| **GPU**       | NVIDIA GeForce RTX 4070 Ti (12GB VRAM)            | NVIDIA GeForce RTX 3090 / 4090 (24GB VRAM)          |
+| **CPU**       | Intel Core i7 (13th Gen+) or AMD Ryzen 7 (7000 series+) | Intel Core i9 (13th Gen+) or AMD Ryzen 9 (7000 series+) |
+| **RAM**       | 64 GB DDR5                                        | 128 GB DDR5 or more                               |
+| **Storage**   | 1TB NVMe SSD                                      | 2TB+ NVMe SSD                                     |
+| **OS**        | Ubuntu 22.04 LTS                                  | Ubuntu 22.04 LTS (dedicated, not via VM or WSL2)  |
 
-**Why VRAM is Critical**: More Video RAM (VRAM) allows for larger textures, more complex 3D models, and the ability to run more sophisticated AI models without hitting memory bottlenecks, which can severely degrade simulation performance.
+:::tip Why the focus on GPU?
+Robotics simulation, especially with tools like Isaac Sim, relies heavily on the GPU for rendering realistic environments and for accelerating the training of AI models. The **VRAM** is particularly critical, as it determines the complexity of the scenes and models you can load. 24GB of VRAM is the gold standard for serious humanoid simulation.
+:::
 
-### Central Processing Unit (CPU) - The Orchestrator
+## Software Installation
 
-While the GPU handles parallel computations, a powerful CPU is necessary for managing simulation logic, operating system tasks, and data pre-processing.
+With your hardware in place, the next step is to install the core software stack.
 
-<HardwareCard title="Intel Core i7 (13th Gen+) or AMD Ryzen 9" spec="Ensures efficient handling of simulation physics, data pipelines, and multi-tasking." />
+### 1. Ubuntu 22.04 LTS
+Ensure you have a clean installation of Ubuntu 22.04. While other versions might work, this is the most commonly supported version across the entire robotics toolchain.
 
-### Random Access Memory (RAM) - System Responsiveness
+### 2. NVIDIA Drivers
+Installing the correct NVIDIA drivers is the most critical step.
+```bash
+# Add the graphics-drivers PPA
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
 
-Sufficient RAM prevents your system from swapping to slower storage, which can cause significant performance dips during resource-intensive tasks.
+# Install the recommended driver (e.g., 535)
+sudo apt install nvidia-driver-535
+```
+After installation, reboot your system and verify the installation with `nvidia-smi`.
 
-<HardwareCard title="64 GB DDR5" spec="Recommended minimum for smooth operation with large datasets and multiple applications running concurrently." />
+### 3. ROS 2 (Humble Hawksbill)
+ROS 2 is the nervous system of our robot. We will use the `Humble` distribution, which is the recommended version for Ubuntu 22.04.
 
-### Operating System (OS) - The Foundation
+Follow the official ROS 2 installation guide: [ROS 2 Humble Installation](https://docs.ros.org/en/humble/Installation.html)
 
-Ubuntu is the de-facto standard for robotics development due to its robust open-source ecosystem and excellent compatibility with tools like ROS 2 and NVIDIA software.
+### 4. Gazebo Simulator
+Gazebo is a powerful physics simulator. It will be installed as part of the ROS 2 "Desktop" installation.
 
-<HardwareCard title="Ubuntu 22.04 LTS" spec="Provides a stable and widely supported environment for development." />
+### 5. NVIDIA Isaac Sim
+Isaac Sim is a photorealistic, physics-accurate virtual environment for robotics simulation.
 
-## Software Installation Overview
+1.  **Install Omniverse Launcher**: Download and install the NVIDIA Omniverse Launcher from the [NVIDIA Omniverse website](https://www.nvidia.com/en-us/omniverse/).
+2.  **Install Isaac Sim**: From the Omniverse Launcher, search for "Isaac Sim" in the Exchange tab and install the latest version.
 
-Once your hardware is ready, you'll install the core software components that form the backbone of your Digital Twin Workstation. While detailed installation guides for each will be provided in subsequent sections/chapters, here's a brief overview:
-
--   **ROS 2 (Robot Operating System 2)**: The flexible framework for writing robot software. It handles communication between different components of your robot system.
--   **Gazebo**: A powerful 3D robot simulator that allows you to accurately and efficiently test robots in virtual environments. It provides robust physics and a wide range of models.
--   **Unity (or similar 3D engine)**: Used for high-fidelity rendering and creating visually rich simulation environments, often integrated with tools like NVIDIA Isaac Sim.
--   **NVIDIA Isaac Sim**: A robotics simulation and synthetic data generation platform built on NVIDIA Omniverse. It's essential for photorealistic simulations, AI model training, and validating robot behaviors.
-
-*Detailed installation guides for each of these will be provided in the following chapters.*
+Once all components are installed, you can launch Isaac Sim and run one of the pre-built demo scenes to verify that your Digital Twin Workstation is fully operational. You are now ready to start building robots.

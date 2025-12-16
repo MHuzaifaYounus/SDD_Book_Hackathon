@@ -1,40 +1,28 @@
-import type { ReactNode } from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from 'react';
 import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-import styles from './index.module.css';
+import HeroSection from '../components/HeroSection';
+import ComparisonCards from '../components/ComparisonCards';
+import FeatureGrid from '../components/FeatureGrid';
+import VerticalTimeline from '../components/VerticalTimeline';
+import ParadigmShift from '../components/ParadigmShift';
+import FinalCTA from '../components/FinalCTA';
 
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/foundations/digital-twin-workstation">
-            Get Started
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-export default function Home(): ReactNode {
+export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="A Handbook for Embodied Intelligence">
-      <HomepageHeader />
+      description="An open-source handbook for building and training embodied agents with a sim-first approach.">
+      <main>
+        <HeroSection />
+        <ComparisonCards />
+        <FeatureGrid />
+        <VerticalTimeline />
+        <ParadigmShift />
+        <FinalCTA />
+      </main>
     </Layout>
   );
 }

@@ -1,49 +1,66 @@
 ---
 sidebar_position: 2
 ---
-import HardwareCard from '@site/src/components/HardwareCard.js';
 
-# Physical AI Edge Kit Setup
+# The Physical AI Edge Kit
 
-The Physical AI Edge Kit is designed for deploying and testing your AI models in real-world scenarios. This compact, energy-efficient hardware platform allows for direct interaction with physical robots and environments, bridging the gap between simulation and reality.
+After developing and refining your robotic agents in the Digital Twin Workstation, the next crucial step is to deploy them to real-world hardware. This is where the Physical AI Edge Kit comes in. It's a compact, energy-efficient computing platform designed for real-time inference and interaction with the physical world.
 
-## Hardware Components
+The Edge Kit acts as the "body" for your AI agents, allowing them to perceive their environment through sensors and execute actions through actuators, bridging the gap between simulation and reality.
 
-The Edge Kit comprises several key components, each playing a crucial role in enabling embodied intelligence:
+## Hardware Recommendations
 
-### Brain: NVIDIA Jetson Orin Nano
+The components of the Edge Kit are chosen for their balance of processing power, sensor capabilities, and compatibility with the ROS 2 ecosystem.
 
-The NVIDIA Jetson Orin Nano serves as the brain of your Edge Kit, providing powerful AI computing capabilities at the edge. It's designed to run complex AI models for perception, navigation, and control in real-time.
+| Component         | Recommendation                       | Description                                                   |
+| :---------------- | :----------------------------------- | :------------------------------------------------------------ |
+| **Brain**         | NVIDIA Jetson Orin Nano (8GB) or Orin NX | High-performance, energy-efficient AI computer for edge inference. |
+| **Eyes**          | Intel RealSense D435i or D455      | Depth-sensing camera for 3D perception and spatial awareness. |
+| **Ear/Voice**     | ReSpeaker USB Mic Array              | Multi-microphone array for capturing and processing audio commands. |
+| **Connectivity**  | Wi-Fi (built-in or USB dongle)       | For communication with the workstation and internet access.   |
 
-<HardwareCard title="NVIDIA Jetson Orin Nano (8GB) or Orin NX" spec="Edge AI Computer" />
+## Setting Up Your Edge Kit
 
-**Key Features**:
--   **High Performance**: Capable of processing multiple sensor streams and running advanced neural networks simultaneously.
--   **Energy Efficiency**: Optimized for low power consumption, making it suitable for battery-powered robotics applications.
--   **Rich I/O**: Offers a wide range of interfaces for connecting cameras, sensors, and actuators.
+### 1. Jetson Orin Setup
 
-### Eyes: Intel RealSense Depth Camera
+The Jetson Orin platform runs a specialized version of Ubuntu. You will typically flash the JetPack SDK onto your Jetson device.
 
-The Intel RealSense depth camera provides your Edge Kit with advanced perception capabilities, allowing it to "see" the world in 3D. This is vital for tasks like object detection, mapping, and obstacle avoidance.
+**Key Steps**:
+*   **Flash JetPack**: Use NVIDIA SDK Manager to flash the latest JetPack version onto your Jetson Orin Nano/NX. This includes Ubuntu, CUDA, cuDNN, and TensorRT.
+*   **Connect Peripherals**: Attach a monitor, keyboard, and mouse for initial setup.
+*   **Network Configuration**: Connect your Jetson to the same network as your Digital Twin Workstation for seamless ROS 2 communication.
 
-<HardwareCard title="Intel RealSense D435i or D455" spec="Depth Camera" />
+### 2. Sensor Integration
 
-**Key Features**:
--   **Depth Perception**: Provides accurate depth information, enabling 3D environment understanding.
--   **RGB Camera**: Captures high-resolution color images for visual processing.
--   **IMU (D435i)**: Integrated Inertial Measurement Unit for motion tracking and improved spatial awareness.
+#### Intel RealSense Camera
 
-### Ear/Voice: ReSpeaker USB Mic Array
+The RealSense camera provides critical depth and RGB data for your robot's perception.
 
-The ReSpeaker USB Mic Array equips your Edge Kit with audio input capabilities, crucial for voice command recognition and sound event detection. This enables natural language interaction with your robot.
+```bash
+# Install RealSense SDK
+sudo apt-key adv --keyserver keys.gnupg.net --recv-key F6E6EAD1
+sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main"
+sudo apt-get update
+sudo apt-get install librealsense2-dkms librealsense2-utils librealsense2-dev librealsense2-dbg
+```
+Verify installation: Connect your RealSense camera and run `realsense-viewer`.
 
-<HardwareCard title="ReSpeaker USB Mic Array" spec="Microphone Array" />
+#### ReSpeaker USB Mic Array
 
-**Key Features**:
--   **Far-Field Voice Capture**: Designed to pick up voices from a distance in noisy environments.
--   **Direction Finding**: Can determine the direction of sound sources, allowing the robot to orient itself towards the speaker.
--   **Noise Reduction**: Built-in algorithms to reduce background noise and improve voice clarity.
+The ReSpeaker provides audio input for voice commands and environmental sound processing.
 
-## Setup and Configuration
+```bash
+# Basic ALSA configuration for USB microphone
+# Ensure it's detected: `arecord -l`
+# Test recording: `arecord -d 5 -f S16_LE -r 16000 test.wav`
+```
+Further integration with speech-to-text engines like Whisper will be covered in later chapters.
 
-*Detailed setup and configuration guides for each component will be provided in the following sections. This will include flashing the Jetson OS, installing necessary drivers for the RealSense camera, and configuring the ReSpeaker array for audio input.*
+## Initial Validation
+
+Once all components are connected and configured, you should be able to:
+*   Power on the Jetson Orin and access the Ubuntu desktop.
+*   View live feed from the RealSense camera using `realsense-viewer`.
+*   Verify the ReSpeaker microphone is detected and can record audio.
+
+Your Physical AI Edge Kit is now ready to receive its first AI models!

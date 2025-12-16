@@ -1,0 +1,13 @@
+.comparisonSection {
+  padding: 4rem 0;
+  background-color: var(--ifm-color-emphasis-100); /* Use custom variable for section background */
+}
+
+.card {
+  background-color: var(--ifm-card-background); /* Use custom variable for card background */
+  color: var(--ifm-card-text-color); /* Use custom variable for card text color */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(87, 87, 87, 0.5);
+  height: 100%;
+}
