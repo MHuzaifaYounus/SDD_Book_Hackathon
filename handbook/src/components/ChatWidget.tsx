@@ -46,7 +46,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ pendingMessage, setPendingMessa
 
       // Simulate API call
       try {
-        const response = await fetch('http://127.0.0.1:8000/chat', {
+        const response = await fetch('https://huzaifa1452007-robotics-book.hf.space/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
