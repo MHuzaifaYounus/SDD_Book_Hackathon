@@ -1,55 +1,54 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# AI/Spec-Driven Book Creation Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Spec-First Integrity
+No code or content is written without a defined Specification (`spec.md`) and Technical Plan (`plan.md`). "Vibe-coding" (jumping straight to code/writing without a plan) is strictly prohibited. The Spec defines the "What" (Content), and the Plan defines the "How" (Implementation).
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Book-as-Product
+We are building a cohesive technical book, not a loose collection of documentation files. Navigation must be linear, logical, and educational. The structure must follow a strict hierarchy: Modules (Parts) → Chapters → Sections.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Immutable Architecture
+The technology stack is fixed and non-negotiable. We do not refactor the core stack, only the content and specific components.
+*   **Framework:** Docusaurus 3.x (Classic Preset)
+*   **Deployment:** GitHub Pages (via GitHub Actions)
+*   **Styling:** Infima + Custom CSS (No switching to Tailwind unless planned)
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Validation-Driven Development
+If the build fails, the task is incomplete. "It works on my machine" is not a valid success criterion. All deliverables must pass the automated build and link-check process before being considered "Done."
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+## Operational Standards & Constraints
 
-### [PRINCIPLE_6_NAME]
+### Key Standards (Testable & Mandatory)
+1.  **Frontmatter Strictness:** Every `.md` or `.mdx` file MUST contain `id`, `title`, `description`, and `sidebar_position` to ensure the sidebar auto-generates correctly and deterministically.
+2.  **Asset Management:** All static assets (images, diagrams) must reside in `static/img/` and use absolute referencing (e.g., `/img/filename.png`). Relative paths for images are prohibited.
+3.  **Code Hygiene:** All code blocks in the book must define a language tag (e.g., ```python) for syntax highlighting.
+4.  **Link Integrity:** Zero broken relative links. All internal links must be relative (`./other-file.md`), ensuring the book is portable.
+5.  **Accessibility:** All images must have descriptive `alt` text.
 
+### Technical Constraints
+*   **Language:** MDX (Markdown + React components).
+*   **Package Manager:** `npm` (Lockfile must remain consistent).
+*   **Directory Structure:**
+    *   `docs/` root = Book Parts/Modules
+    *   Subfolders = Chapters
+    *   Files = Sections
 
-[PRINCIPLE__DESCRIPTION]
+## Quality Gates & Success Criteria
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Build Validation
+*   `npm run build` must complete with **exit code 0**.
+*   Docusaurus broken link checker must report **0 errors**.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### UX Validation
+*   Navigation sidebar must render in the correct `sidebar_position` order (1, 2, 3...).
+*   All code examples in the book must be syntactically valid and copy-pasteable.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This Constitution supersedes all other project practices. 
+*   **Amendments:** Require documentation updates in `constitution.md`, peer approval, and a migration plan if the architecture changes.
+*   **Compliance:** All PRs and reviews must verify compliance with the Core Principles.
+*   **Complexity:** Any deviation from the standard Docusaurus pattern must be justified in `spec.md`.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-18 | **Last Amended**: 2025-12-18

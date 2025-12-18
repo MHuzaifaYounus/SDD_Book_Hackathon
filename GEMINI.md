@@ -208,3 +208,11 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- Python 3.11 + FastAPI, Uvicorn, Google Generative AI, Qdrant Client, Psycopg2, LangChain (002-rag-chatbot)
+- Qdrant Cloud (Vector DB), Neon Serverless Postgres (History DB) (002-rag-chatbot)
+- Python 3.11 + FastAPI, Uvicorn, OpenAI, Qdrant Client, Psycopg2, python-dotenv (002-rag-chatbot)
+
+## Recent Changes
+- 002-rag-chatbot: Added Python 3.11 + FastAPI, Uvicorn, Google Generative AI, Qdrant Client, Psycopg2, LangChain

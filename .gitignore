@@ -14,3 +14,10 @@ Thumbs.db
 .idea/
 .gemini
 .gemini/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
